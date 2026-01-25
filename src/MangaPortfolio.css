@@ -1,0 +1,80 @@
+/* --- 1. The Manga Grid Layout --- */
+.manga-container {
+  display: grid;
+  height: 100vh;
+  gap: 15px;
+  padding: 20px;
+  background-color: #050505; /* Dark background for HUD contrast */
+  
+  /* This defines the puzzle pieces of your layout */
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 150px 1fr 150px;
+  grid-template-areas:
+    "profile  hero    stats"
+    "nav      hero    projects"
+    "nav      status  projects";
+}
+
+/* --- 2. The HUD / Tech Styling --- */
+.panel {
+  background: rgba(20, 20, 25, 0.8);
+  border: 1px solid #00ffcc; /* Cyan color common in Anime HUDs */
+  color: #00ffcc;
+  padding: 20px;
+  position: relative;
+  
+  /* THE MAGIC: Cuts the corners to look like sci-fi panels */
+  clip-path: polygon(
+    10px 0, 100% 0, 
+    100% calc(100% - 10px), calc(100% - 10px) 100%, 
+    0 100%, 0 10px
+  );
+  
+  /* Optional: "Scanline" effect for background texture */
+  background-image: linear-gradient(rgba(0, 255, 204, 0.05) 1px, transparent 1px);
+  background-size: 100% 4px;
+}
+
+/* Specific Panel Assignments */
+.area-profile { grid-area: profile; }
+.area-hero    { grid-area: hero; border-width: 2px; } /* Main focus gets thicker border */
+.area-stats   { grid-area: stats; }
+.area-nav     { grid-area: nav; }
+.area-status  { grid-area: status; }
+.area-projects{ grid-area: projects; }
+
+/* --- 3. A Tech Button --- */
+.cyber-btn {
+  background: #00ffcc;
+  color: #000;
+  border: none;
+  padding: 10px 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Orbitron', sans-serif; /* Sci-fi font */
+  cursor: pointer;
+  
+  /* Aggressive corner cut */
+  clip-path: polygon(10% 0, 100% 0, 100% 60%, 90% 100%, 0 100%, 0 40%);
+  transition: all 0.2s;
+}
+
+.cyber-btn:hover {
+  background: #fff;
+  transform: translateX(5px); /* Slight movement on hover */
+  box-shadow: -5px 5px 0px rgba(0, 255, 204, 0.5);
+}
+
+/* Mobile Responsiveness: Stack everything */
+@media (max-width: 768px) {
+  .manga-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "hero"
+      "profile"
+      "stats"
+      "projects"
+      "nav";
+  }
+}

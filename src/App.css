@@ -1,38 +1,190 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap');
+
+:root {
+  --bg-dark: #000000;
+  --card-bg: rgba(15, 15, 15, 0.7); /* Dark semi-transparent */
+  --border: rgba(255, 255, 255, 0.1);
+  --accent: #a855f7; /* Purple accent */
+  --accent-glow: #6366f1; /* Blue/Indigo glow */
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+body {
+  margin: 0;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- LAYOUT --- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 10; /* KEEPS CONTENT ABOVE MATRIX BACKGROUND */
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3 {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  max-width: 600px;
+}
+
+/* --- BENTO GRID SYSTEM --- */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto; 
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* --- CARDS (Glassmorphism) --- */
+.card, .project-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px); /* Blur effect behind card */
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.card:hover, .project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-glow);
+}
+
+/* Special Layout for Hero Card */
+.hero-card {
+  min-height: 350px;
+}
+
+@media (min-width: 768px) { 
+  .hero-card { 
+    grid-column: span 2; 
+    grid-row: span 2; 
+  }
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: row; /* Align icon and text side-by-side */
+  align-items: center;
+  gap: 1rem;
+}
+
+/* --- UI ELEMENTS --- */
+.icon-box {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(168,85,247,0.1));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--accent);
+  margin-bottom: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+/* Tech Pills (Tags) */
+.tech-pill {
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: inline-block;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Glowing Button */
+.btn-glow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--text-primary);
+  color: var(--bg-dark);
+  font-weight: 700;
+  border-radius: 100px;
+  text-decoration: none;
+  margin-top: 2rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: fit-content;
+}
+
+.btn-glow:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+/* --- LINKS --- */
+a {
+  color: inherit;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* --- SCROLLBAR --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
