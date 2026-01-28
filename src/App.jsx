@@ -1,8 +1,42 @@
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import './App.css'; // <--- THIS IS THE MAGIC LINE YOU WERE MISSING
+import { motion, AnimatePresence } from 'framer-motion';
 import MatrixBackground from './MatrixBackground'; 
 import { Github, ExternalLink, MapPin, Database, Sparkles, BrainCircuit, HeartPulse, ArrowUpRight, Rocket, Download } from 'lucide-react';
 
+// --- LOADER COMPONENT ---
+const Loader = () => (
+  <motion.div 
+    className="loader-container"
+    exit={{ opacity: 0, transition: { duration: 0.8 } }}
+  >
+    <div className="loader">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <defs>
+          <mask id="clipping">
+            <polygon points="0,0 100,0 100,100 0,100" fill="black"></polygon>
+            <polygon points="25,25 75,25 50,75" fill="white"></polygon>
+            <polygon points="50,25 75,75 25,75" fill="white"></polygon>
+            <polygon points="35,35 65,35 50,65" fill="white"></polygon>
+            <polygon points="35,35 65,35 50,65" fill="white"></polygon>
+            <polygon points="35,35 65,35 50,65" fill="white"></polygon>
+            <polygon points="35,35 65,35 50,65" fill="white"></polygon>
+          </mask>
+        </defs>
+      </svg>
+      <div className="box"></div>
+    </div>
+  </motion.div>
+);
+
 export default function Portfolio() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2500); 
+    return () => clearTimeout(timer);
+  }, []);
+
   const projects = [
     {
       title: "Chroma AI",
@@ -44,9 +78,18 @@ export default function Portfolio() {
 
   return (
     <>
+      <AnimatePresence>
+        {loading && <Loader />}
+      </AnimatePresence>
+
       <MatrixBackground />
 
-      <div className="container">
+      <motion.div 
+        className="container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: loading ? 0 : 1 }}
+        transition={{ duration: 0.8 }}
+      >
         
         {/* NAVBAR */}
         <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 0', marginBottom: '2rem' }}>
@@ -75,7 +118,7 @@ export default function Portfolio() {
           {/* HERO CARD */}
           <motion.div 
             className="card hero-card"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div style={{ marginBottom: '1rem', display: 'flex', gap: '10px' }}>
               <span className="tech-pill">Data Science</span>
@@ -93,7 +136,7 @@ export default function Portfolio() {
           {/* LOCATION CARD */}
           <motion.div 
             className="card stat-card"
-            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}
+            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}
           >
             <div className="icon-box" style={{ margin: 0 }}><MapPin size={24} /></div>
             <div>
@@ -105,7 +148,7 @@ export default function Portfolio() {
           {/* TECH STACK CARD */}
           <motion.div 
             className="card"
-            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.3 }}
+            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4 }}
           >
             <h3 style={{ margin: '0 0 1rem 0' }}>Stack</h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
@@ -118,7 +161,7 @@ export default function Portfolio() {
           {/* ACHIEVEMENTS CARD */}
           <motion.div 
             className="card" style={{ gridColumn: 'span 1' }}
-            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.4 }}
+            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.5 }}
           >
              <h3 style={{ margin: '0 0 1rem 0', display: 'flex', alignItems: 'center', gap: '8px' }}>
                <Database size={18} className="gradient-text" /> Wins
@@ -172,7 +215,7 @@ export default function Portfolio() {
         <footer style={{ marginTop: '6rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem', textAlign: 'center', color: '#64748b' }}>
           <p>© 2025 Satyam Patel. Crafted with React.</p>
         </footer>
-      </div>
+      </motion.div>
     </>
   );
 }
