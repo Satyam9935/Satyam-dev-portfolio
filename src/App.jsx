@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './App.css'; // <--- THIS IS THE MAGIC LINE YOU WERE MISSING
+import './App.css'; 
 import { motion, AnimatePresence } from 'framer-motion';
 import MatrixBackground from './MatrixBackground'; 
 import { Github, ExternalLink, MapPin, Database, Sparkles, BrainCircuit, HeartPulse, ArrowUpRight, Rocket, Download } from 'lucide-react';
@@ -123,10 +123,12 @@ export default function Portfolio() {
             <div style={{ marginBottom: '1rem', display: 'flex', gap: '10px' }}>
               <span className="tech-pill">Data Science</span>
               <span className="tech-pill">AI Automation</span>
+              <span className="tech-pill">DSA</span>
+              <span className="tech-pill">Machine Learning</span>
             </div>
             <h1>Building intelligence <br /> for the <span className="gradient-text">modern web.</span></h1>
             <p className="tagline">
-              I am <strong>Satyam Patel</strong>. I bridge the gap between complex Python logic and beautiful React interfaces to build real-time, intelligent applications.
+              I am <strong>Satyam Patel</strong>. I bridge the gap between complex Python logic and beautiful React interfaces to build real-time, intelligent applications, combining my expertise in DSA, Machine Learning, and AI Automation to create scalable and efficient solutions.
             </p>
             <a href="#projects" className="btn-glow">
               View Projects <ArrowUpRight size={18} />
@@ -167,9 +169,9 @@ export default function Portfolio() {
                <Database size={18} className="gradient-text" /> Wins
              </h3>
              <ul style={{ paddingLeft: '1.2rem', margin: 0, fontSize: '0.9rem', color: '#cbd5e1', lineHeight: '1.6' }}>
-               <li>🏆 3rd Place SIH</li>
-               <li>🚀 Top 10 BuildFast</li>
-               <li>⭐ 5 Star Hackerrank</li>
+               <li> 3rd Place SIH</li>
+               <li> Top 10 BuildFast</li>
+               <li> 5 Star Hackerrank</li>
              </ul>
           </motion.div>
 
@@ -213,7 +215,7 @@ export default function Portfolio() {
         </section>
 
         <footer style={{ marginTop: '6rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem', textAlign: 'center', color: '#64748b' }}>
-          <p>© 2025 Satyam Patel. Crafted with React.</p>
+          <p>© 2025 Satyam Patel</p>
         </footer>
       </motion.div>
     </>

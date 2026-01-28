@@ -1,4 +1,4 @@
-/* --- PREMIUM APP.CSS --- */
+
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
 
 :root {
@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Outfit', sans-serif; /* Cleaner, modern font */
+  font-family: 'Outfit', sans-serif; 
   background-color: var(--bg-dark);
   color: #fff;
   margin: 0;
@@ -49,7 +49,7 @@ body::before {
   padding: 24px;
   border-radius: 24px;
   backdrop-filter: blur(12px);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy smooth transition */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
   position: relative;
   overflow: hidden;
 }
@@ -59,7 +59,7 @@ body::before {
   transform: translateY(-8px);
   border-color: rgba(168, 85, 247, 0.3);
   box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), 
-              0 0 20px rgba(168, 85, 247, 0.1); /* Subtle purple glow */
+              0 0 20px rgba(168, 85, 247, 0.1); 
 }
 
 /* Shine sweep effect */
@@ -179,7 +179,7 @@ h1 {
   h1 { font-size: 2.5rem; }
 }
 
-/* --- LOADER STYLES (Keep this unchanged) --- */
+
 .loader-container {
   position: fixed;
   top: 0; left: 0; width: 100%; height: 100vh;
@@ -187,7 +187,7 @@ h1 {
   z-index: 9999;
   display: flex; justify-content: center; align-items: center;
 }
-/* ... (Keep your existing loader animation styles here) ... */
+
 .loader {
   /* CHANGE THESE COLORS TO MATCH YOUR SITE */
   --color-one: #a855f7;  /* Bright Purple */
@@ -196,10 +196,10 @@ h1 {
   --color-four: #ec489980;  /* Pink Glow */
   --color-five: #a855f740;  /* Faint Purple */
   
-  --time-animation: 2.5s; /* Slightly slower for a "premium" feel */
+  --time-animation: 2.5s;
   --size: 1.5;
   
-  /* Keep the rest the same */
+  
   position: relative;
   width: 100px;
   height: 100px;
