@@ -19,7 +19,7 @@ export default function Portfolio() {
       desc: "Secure digital health platform linked with Aadhaar QR codes for instant medical history retrieval.",
       tech: ["React", "TypeScript", "Tailwind"],
       icon: <HeartPulse size={24} />,
-      github: "https://github.com", // Add link if you have it
+      github: "https://github.com", 
       demo: "#"
     },
     {
@@ -28,7 +28,7 @@ export default function Portfolio() {
       desc: "Automated test generator using Large Language Models (LLM) to create questions from raw text.",
       tech: ["Python", "Gen AI", "LangChain"],
       icon: <BrainCircuit size={24} />,
-      github: "https://github.com", // Add link if you have it
+      github: "https://github.com", 
       demo: "#"
     },
     {
@@ -44,10 +44,8 @@ export default function Portfolio() {
 
   return (
     <>
-      {/* 1. BACKGROUND LAYER */}
       <MatrixBackground />
 
-      {/* 2. MAIN CONTENT LAYER */}
       <div className="container">
         
         {/* NAVBAR */}
@@ -57,7 +55,6 @@ export default function Portfolio() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
               <a href="mailto:satyamp9005@gmail.com" style={{ color: '#fff', textDecoration: 'none', fontSize: '0.9rem', opacity: 0.8 }}>Contact</a>
               
-              {/* RESUME BUTTON */}
               <a 
                 href="/resume.pdf" 
                 download="Satyam_Patel_Resume.pdf"
@@ -66,8 +63,6 @@ export default function Portfolio() {
                   background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', 
                   padding: '8px 16px', borderRadius: '100px', color: 'white', textDecoration: 'none', fontSize: '0.85rem', fontWeight: '500', transition: '0.3s'
                 }}
-                onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
-                onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
               >
                   <Download size={16} /> Resume
               </a>
@@ -129,9 +124,9 @@ export default function Portfolio() {
                <Database size={18} className="gradient-text" /> Wins
              </h3>
              <ul style={{ paddingLeft: '1.2rem', margin: 0, fontSize: '0.9rem', color: '#cbd5e1', lineHeight: '1.6' }}>
-               <li>🏆 3rd Place SIH Hackathon</li>
-               <li>🚀 Top 10 BuildFast GenAI</li>
-               <li>🎓 TechFest Coordinator</li>
+               <li>🏆 3rd Place SIH</li>
+               <li>🚀 Top 10 BuildFast</li>
+               <li>⭐ 5 Star Hackerrank</li>
              </ul>
           </motion.div>
 
@@ -153,11 +148,9 @@ export default function Portfolio() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
                   <div className="icon-box" style={{ marginBottom: 0 }}>{p.icon}</div>
                   <div style={{ display: 'flex', gap: '10px' }}>
-                    {/* Github Link */}
                     <a href={p.github} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
                       <Github size={20} className="text-secondary" style={{ cursor: 'pointer', transition: '0.2s' }} />
                     </a>
-                    {/* Live Demo Link */}
                     <a href={p.demo} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>
                       <ExternalLink size={20} className="text-secondary" style={{ cursor: 'pointer', transition: '0.2s' }} />
                     </a>
